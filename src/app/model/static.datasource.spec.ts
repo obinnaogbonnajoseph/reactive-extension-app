@@ -1,7 +1,7 @@
-import { Static.Datasource } from './static.datasource';
+import { StaticDataSource } from './static.datasource';
 
-describe('Static.Datasource', () => {
+describe('StaticDataSource', () => {
   it('should create an instance', () => {
-    expect(new Static.Datasource()).toBeTruthy();
+    expect(new StaticDataSource()).toBeTruthy();
   });
 });

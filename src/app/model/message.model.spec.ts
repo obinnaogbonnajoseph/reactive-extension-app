@@ -1,7 +1,8 @@
-import { Message.Model } from './message.model';
+import { Model } from './repository.model';
+import { StaticDataSource } from './static.datasource';
 
-describe('Message.Model', () => {
+describe('Model', () => {
   it('should create an instance', () => {
-    expect(new Message.Model()).toBeTruthy();
+    expect(new Model(new StaticDataSource())).toBeTruthy();
   });
 });

@@ -12,12 +12,20 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
+    files: [
+      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
+      { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false },
+      { pattern: 'src/app/**/*.ts', included: false, watched: true },
+      { pattern: 'src/app/**/*.html', included: false, watched: true },
+      { pattern: 'src/app/**/*.css', included: false, watched: true },
+      { pattern: 'src/tests/**/*.ts', included: false, watched: true }
+    ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/reactive-extension-app'),
-      reports: ['html', 'lcovonly', 'text-summary'],
+      dir: require('path').join(__dirname, '../coverage'),
+      reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
@@ -26,7 +34,6 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false,
-    restartOnFileChange: true
+    singleRun: false
   });
 };

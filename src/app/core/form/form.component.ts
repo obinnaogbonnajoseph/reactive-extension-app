@@ -37,7 +37,8 @@ export class FormComponent{
       if (form.valid) {
         this.model.saveProduct(this.product);
         this.product = new Product();
-        // form.reset;
+        // tslint:disable-next-line: no-unused-expression
+        form.reset;
       }
     }
 
