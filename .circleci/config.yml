@@ -34,8 +34,13 @@ jobs:
             # Test the source code
             - run:
                 name: Testing
-                command: npm run test
+                command: npm run test --no-watch --no-progress --browsers=ChromeHeadlessCI
             # End to End test
             #- run:
                 #name: End to End Test
                 #command: npm run e2e
+            # Build the project. Currently have only one configuration
+            #- run:
+                #name: Building
+                #command: npm run build
+
