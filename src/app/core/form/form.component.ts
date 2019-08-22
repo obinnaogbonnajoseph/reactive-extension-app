@@ -18,15 +18,17 @@ export class FormComponent{
   constructor(private model: Model,
               @Inject(SHARED_STATE) private stateEvents: Observable<SharedState>) {
       stateEvents
-      .pipe(skipWhile(state => state.mode == MODES.CREATE))
-      .pipe(distinctUntilChanged((firstState, secondState) =>
-      firstState.mode == secondState.mode
-      && firstState.id == secondState.id))
+      // .pipe(skipWhile(state => state.mode == MODES.CREATE))
+      // .pipe(distinctUntilChanged((firstState, secondState) =>
+      // firstState.mode == secondState.mode
+      // && firstState.id == secondState.id))
       .subscribe(update => {
         this.product = new Product();
+        // tslint:disable-next-line: triple-equals
         if (update.id != undefined) {
           Object.assign(this.product, this.model.getProduct(update.id));
         }
+        // tslint:disable-next-line: triple-equals
         this.editing = update.mode == MODES.EDIT;
       });
     }

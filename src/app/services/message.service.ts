@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Message } from '../model/message.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MessageService {
 
   private subject = new Subject<Message>();

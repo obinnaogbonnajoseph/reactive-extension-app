@@ -7,11 +7,13 @@ import { MessageService } from '../services/message.service';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.sass']
 })
-export class MessageComponent{
+export class MessageComponent {
   lastMessage: Message;
 
   constructor(messageService: MessageService) {
-    messageService.messages.subscribe(m => this.lastMessage = m);
+    messageService.messages.subscribe(m => {
+      this.lastMessage = m;
+    });
   }
 
 }

@@ -1,5 +1,4 @@
 import { InjectionToken } from '@angular/core';
-import { R3FactoryDelegateType } from '@angular/compiler/src/render3/r3_factory';
 
 export enum MODES {
   CREATE, EDIT

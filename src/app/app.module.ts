@@ -7,17 +7,20 @@ import { MessageComponent } from './message/message.component';
 import { CoreModule } from './core/core.module';
 import { ModelModule } from './model/model.module';
 import { ServicesModule } from './services/services.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     CoreModule,
     ModelModule,
     ServicesModule
   ],
   declarations: [MessageComponent],
-  providers: [],
   bootstrap: [TableComponent, FormComponent, MessageComponent]
 })
 export class AppModule { }

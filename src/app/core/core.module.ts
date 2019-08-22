@@ -12,6 +12,7 @@ import { MessageService } from '../services/message.service';
 import { Model } from '../model/repository.model';
 import { Subject } from 'rxjs';
 import { Message } from '../model/message.model';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [FormComponent, TableComponent, StatePipe],
@@ -20,7 +21,8 @@ import { Message } from '../model/message.model';
     BrowserModule,
     FormsModule,
     ModelModule,
-    ServicesModule
+    ServicesModule,
+    PaginationModule.forRoot()
   ],
   exports: [TableComponent, FormComponent],
   providers: [{
@@ -28,10 +30,12 @@ import { Message } from '../model/message.model';
     deps: [MessageService, Model],
     useFactory: (messageService, model) => {
       const subject = new Subject<SharedState>();
-      subject.subscribe(m => messageService.reportMessage(
+      subject.subscribe(m => {
+        messageService.reportMessage(
+        // tslint:disable-next-line: triple-equals
         new Message(MODES[m.mode] + ' ' +  (m.id != undefined
-          ? `${model.getProduct(m.id).name}` : ''))
-      ));
+          ? `${model.getProduct(m.id).name}` : '')));
+      });
       return subject;
     }
   }]
